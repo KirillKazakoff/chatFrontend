@@ -53,11 +53,30 @@ export default class Chat {
             return;
         }
 
+        if (response.delUsrName) {
+            this.disconnectUser(response.delUsrName);
+            return;
+        }
+
         response.messages.forEach((msg) => this.mesInsert(msg));
 
         response.avatars.forEach((ava) => {
             if (ava.userName === this.userName) return;
             this.avaInsert(ava.usrHtml);
+        });
+    }
+
+    disconnectUser(usrName) {
+        const nodes = [...this.avatarsContainer.children];
+        nodes.some((node) => {
+            const name = node.querySelector('.user-name');
+            const check = name.textContent === usrName;
+
+            if (check) {
+                node.remove();
+                return true;
+            }
+            return false;
         });
     }
 
