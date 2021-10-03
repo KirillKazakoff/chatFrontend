@@ -12,7 +12,9 @@ export default class Chat {
 
         this.node.addEventListener('submit', (e) => this.onSubmit(e));
 
-        this.ws = new WebSocket('ws://localhost:9091/ws');
+        // this.ws = new WebSocket('ws://localhost:9091/ws');
+        this.ws = new WebSocket('ws://my-chat-bruh.herokuapp.com/ws');
+
         this.ws.addEventListener('message', (e) => this.onWsMessage(e));
 
         const sendLogin = JSON.stringify({ login: userName });

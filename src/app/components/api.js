@@ -39,5 +39,6 @@ class Api {
     }
 }
 
-const api = new Api('http://localhost:9091');
+// const api = new Api('http://localhost:9091');
+const api = new Api('https://my-chat-bruh.herokuapp.com');
 export default api;
