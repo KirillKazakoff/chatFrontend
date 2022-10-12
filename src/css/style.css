@@ -11,6 +11,7 @@ h1 {
     display: none;
 }
 
+/* .chat */
 .chat {
     padding: 15px;
     margin-top: 30px;
@@ -18,7 +19,7 @@ h1 {
     flex-wrap: wrap;
 }
 
-.aside-container {
+.aside {
     margin-top: 50px;
     padding: 20px;
     align-self: flex-start;
@@ -28,16 +29,17 @@ h1 {
     width: 30%;
 }
 
-.user-container {
+/* user */
+.user {
     display: flex;
     align-items: center;
 }
 
-.user-container:nth-child(n+2) {
+.user:nth-child(n + 2) {
     margin-top: 20px;
 }
 
-.round {
+.user__round {
     margin-right: 20px;
     width: 40px;
     height: 40px;
@@ -45,54 +47,18 @@ h1 {
     border-radius: 50px;
 }
 
-.chat-content {
+/* .content */
+.content {
     display: flex;
     flex-wrap: wrap;
     border-radius: 10px;
-    height: 100vh;
+    min-height: 87vh;
     width: 70%;
     border: 2px tan solid;
     padding: 15px;
 }
 
-.messages {
-    width: 100%;
-    max-height: 80vh;
-    overflow-y: scroll;
-}
-
-.message {
-    background-color: tan;
-    border: 2px solid black;
-    width: 50%;
-    border-radius: 20px;
-    padding: 5px 10px;
-}
-
-.message:nth-child(n+2) {
-    margin-top: 30px;
-}
-
-.message__you {
-    margin-left: auto;
-    text-align: right;
-}
-
-.message-header {
-    color: grey;
-    font-size: 20px;
-    margin-bottom: 15px;
-}
-
-.message__you .message-header {
-    color: hotpink;
-}
-
-.message-content {
-    font-size: 28px;
-}
-
-.message-input {
+.content__input {
     align-self: flex-end;
     height: 50px;
     padding: 15px;
@@ -101,4 +67,43 @@ h1 {
     width: 95%;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* messages */
+.messages {
+    width: 100%;
+    max-height: 70vh;
+    overflow-y: scroll;
+}
+
+.message {
+    background-color: #f2ece4;
+    width: 50%;
+    border-radius: 20px;
+    padding: 10px 10px;
+}
+
+.message:nth-child(n + 2) {
+    margin-top: 30px;
+}
+
+.message--you {
+    margin-left: auto;
+    text-align: right;
+    background-color: #d8e4ff;
+}
+
+.message__header {
+    color: grey;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.message--you .message__header {
+    color: hotpink;
+}
+
+.message__content {
+    color: darkslategrey;
+    font-size: 28px;
 }
