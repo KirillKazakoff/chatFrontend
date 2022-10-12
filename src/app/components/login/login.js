@@ -19,11 +19,14 @@ export default class LoginForm {
         };
 
         loader.showLoader();
-        const response = await api.user.add(postData);
-        if (response.status === 'ok') {
+        this.form.classList.add('hidden');
+        try {
+            await api.user.add(postData);
             this.chat = new Chat(name);
+        } catch (error) {
+            this.form.classList.remove('hidden');
+        } finally {
             loader.hideLoader();
         }
-        this.form.classList.add('hidden');
     }
 }

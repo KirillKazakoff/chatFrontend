@@ -1,6 +1,10 @@
 /* eslint-disable class-methods-use-this */
 import api from '../api';
 
+const socketProd = 'wss://my-chat-bruh.herokuapp.com/wss';
+const socketDev = 'ws://localhost:9091/ws';
+const socket = process.env.NODE_ENV === 'production' ? socketProd : socketDev;
+
 export default class Chat {
     constructor(userName) {
         this.userName = userName;
@@ -12,9 +16,7 @@ export default class Chat {
 
         this.node.addEventListener('submit', (e) => this.onSubmit(e));
 
-        this.ws = new WebSocket('ws://localhost:9091/ws');
-        // this.ws = new WebSocket('wss://my-chat-bruh.herokuapp.com/wss');
-
+        this.ws = new WebSocket(socket);
         this.ws.addEventListener('message', (e) => this.onWsMessage(e));
 
         const sendLogin = JSON.stringify({ login: userName });
