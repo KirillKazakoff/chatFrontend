@@ -2,6 +2,7 @@ import api from '../api';
 import './login.css';
 import Chat from '../chat/chat';
 import loader from '../loader/Loader';
+import info from '../info/info';
 
 export default class LoginForm {
     constructor() {
@@ -13,6 +14,10 @@ export default class LoginForm {
     async send(e) {
         e.preventDefault();
         const name = this.form.name.value;
+        if (!name) {
+            info.renderInfo('Введите свое имя', '');
+            return;
+        }
 
         const postData = {
             user: name,
