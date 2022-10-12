@@ -62,7 +62,11 @@ h1 {
 }
 
 .message {
-    width: 80%;
+    background-color: tan;
+    border: 2px solid black;
+    width: 50%;
+    border-radius: 20px;
+    padding: 5px 10px;
 }
 
 .message:nth-child(n+2) {

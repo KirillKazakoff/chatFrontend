@@ -1,7 +1,6 @@
-const path = require('path'); // Node.js модуль для разрешения путей файлов
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     target: 'web',
@@ -13,11 +12,11 @@ module.exports = {
     },
 
     devServer: {
-        port: 9000,
+        port: 9001,
         contentBase: './',
         watchContentBase: true,
         publicPath: '/dist/',
-        clientLogLevel: "silent",
+        clientLogLevel: 'silent',
     },
     devtool: 'source-map',
 
@@ -25,9 +24,7 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/,
-                use: [
-                    MiniCssExtractPlugin.loader, 'css-loader',
-                ],
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
                 test: /\.m?js$/,
@@ -74,12 +71,5 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css',
         }),
-
-        // new CopyPlugin({
-        //     patterns: [
-        //         { from: "src/files", to: "files" },
-        //     ],
-        // }),
     ],
-
 };
