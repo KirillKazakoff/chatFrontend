@@ -71,7 +71,7 @@ export default class Chat {
     disconnectUser(usrName) {
         const nodes = [...this.avatarsContainer.children];
         nodes.some((node) => {
-            const name = node.querySelector('.user-name');
+            const name = node.querySelector('.user__name');
             const check = name.textContent === usrName;
 
             if (check) {

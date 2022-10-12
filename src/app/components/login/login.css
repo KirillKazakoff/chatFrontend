@@ -18,6 +18,11 @@
     padding: 15px;
 }
 
+.login__send-btn:hover {
+    border-color: brown;
+    color: royalblue;
+}
+
 .hidden {
     display: none;
 }
