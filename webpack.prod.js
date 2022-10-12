@@ -6,9 +6,6 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 module.exports = merge(common, {
     mode: 'production',
     optimization: {
-        minimizer: [
-            new TerserPlugin({}),
-            new OptimizeCSSAssetsPlugin({}),
-        ],
+        minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
     },
 });

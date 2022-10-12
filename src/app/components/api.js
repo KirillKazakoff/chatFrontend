@@ -42,6 +42,7 @@ class Api {
 const prodUrl = 'https://my-chat-bruh.herokuapp.com';
 const devUrl = 'http://localhost:9091';
 const url = process.env.NODE_ENV === 'production' ? prodUrl : devUrl;
+console.log(process.env.NODE_ENV);
 const api = new Api(url);
 
 export default api;
