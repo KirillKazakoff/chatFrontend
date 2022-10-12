@@ -1,27 +1,29 @@
-/* eslint-disable class-methods-use-this */
 import api from '../api';
 import './login.css';
 import Chat from '../chat/chat';
+import loader from '../loader/Loader';
 
 export default class LoginForm {
     constructor() {
-        this.node = document.querySelector('.login');
+        this.form = document.querySelector('.login');
 
-        this.node.addEventListener('submit', (e) => this.send(e));
+        this.form.addEventListener('submit', (e) => this.send(e));
     }
 
     async send(e) {
         e.preventDefault();
-        const name = this.node.name.value;
+        const name = this.form.name.value;
 
         const postData = {
             user: name,
         };
 
+        loader.showLoader();
         const response = await api.user.add(postData);
         if (response.status === 'ok') {
             this.chat = new Chat(name);
+            loader.hideLoader();
         }
-        this.node.classList.add('hidden');
+        this.form.classList.add('hidden');
     }
 }
