@@ -38,4 +38,8 @@ class Info {
 }
 
 const info = new Info();
+
+// caching svg icon (won't be accessible offline)
+info.renderInfo('', '');
+info.hide();
 export default info;
