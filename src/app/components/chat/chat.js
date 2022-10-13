@@ -52,6 +52,8 @@ export default class Chat {
 
         if (response.usrHtml) {
             this.avaInsert(response.usrHtml.usrHtml);
+            if (!response.messages) return;
+            response.messages.forEach((msg) => this.mesInsert(msg));
             return;
         }
 
@@ -59,8 +61,6 @@ export default class Chat {
             this.disconnectUser(response.delUsrName);
             return;
         }
-
-        response.messages.forEach((msg) => this.mesInsert(msg));
 
         response.avatars.forEach((ava) => {
             if (ava.userName === this.userName) return;
