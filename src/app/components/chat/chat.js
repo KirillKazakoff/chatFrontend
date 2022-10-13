@@ -1,4 +1,5 @@
 /* eslint-disable class-methods-use-this */
+import { getTime } from '../../lib/utils';
 import api from '../api';
 
 const socketProd = 'wss://my-chat-bruh.herokuapp.com/wss';
@@ -36,7 +37,7 @@ export default class Chat {
 
         this.ws.send(JSON.stringify(messageData));
         const htmlMes = await api.message.send(messageData);
-        this.mesContainer.insertAdjacentHTML('beforeend', htmlMes);
+        this.mesInsert(htmlMes);
 
         this.node.message.value = '';
     }
@@ -50,22 +51,22 @@ export default class Chat {
             return;
         }
 
-        if (response.usrHtml) {
-            this.avaInsert(response.usrHtml.usrHtml);
+        if (response.login) {
+            response.avatars.forEach((ava) => {
+                this.avaInsert(ava.usrHtml);
+            });
             if (!response.messages) return;
             response.messages.forEach((msg) => this.mesInsert(msg));
             return;
         }
 
-        if (response.delUsrName) {
-            this.disconnectUser(response.delUsrName);
-            return;
+        if (response.newParticipant) {
+            this.avaInsert(response.avatar.usrHtml);
         }
 
-        response.avatars.forEach((ava) => {
-            if (ava.userName === this.userName) return;
-            this.avaInsert(ava.usrHtml);
-        });
+        if (response.delUsrName) {
+            this.disconnectUser(response.delUsrName);
+        }
     }
 
     disconnectUser(usrName) {
@@ -85,6 +86,10 @@ export default class Chat {
     mesInsert(mesHtml) {
         if (mesHtml === 'empty') return;
         this.mesContainer.insertAdjacentHTML('beforeend', mesHtml);
+        const data = this.mesContainer.lastElementChild.querySelector(
+            '.message__header-data',
+        );
+        data.textContent = getTime();
     }
 
     avaInsert(usrHtml) {
