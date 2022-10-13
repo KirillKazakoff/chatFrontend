@@ -99,6 +99,10 @@ h1 {
     margin-bottom: 15px;
 }
 
+.message__header-name {
+    padding-right: 5px;
+}
+
 .message--you .message__header {
     color: hotpink;
 }

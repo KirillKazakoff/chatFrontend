@@ -34,12 +34,11 @@ export default class Chat {
         };
 
         if (!message) return;
+        this.node.message.value = '';
 
         this.ws.send(JSON.stringify(messageData));
         const htmlMes = await api.message.send(messageData);
         this.mesInsert(htmlMes);
-
-        this.node.message.value = '';
     }
 
     onWsMessage(e) {
