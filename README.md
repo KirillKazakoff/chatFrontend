@@ -1,5 +1,10 @@
 # Онлайн-чат 
-**Ссылка на сайт: [GitHubPages][gitPages]**
+
+> ## Ссылка на сайт: [**GitHubPages**][GitHubPages]
+
+</br>
+
+<h2>Оглавление</h2>
 
 - [Онлайн-чат](#онлайн-чат)
   - [Описание](#описание)
@@ -13,7 +18,7 @@
 
 ## Описание
 Онлайн-чат - это приложение, в котором пользователи могут общаться друг с другом. Передача данных между юзерами происходит по протоколу WebSocket. Пользователи авторизируются по протоколу HTTPS. </br>
-Верстка не адаптивная, только под ПК.
+Верстка неадаптивная.
 
 ## Возможности
 - Организация двухстороннего обмена данных между клиентами и сервером через WS
@@ -92,7 +97,7 @@ yarn
 
 
 <!-- Links in text -->
-[GitPages]: https://kirillkazakoff.github.io/chatFrontend/
+[GitHubPages]: https://kirillkazakoff.github.io/chatFrontend/
 [этот]: <https://github.com/KirillKazakoff/chatBackend>
 [login_gif]: ./assets/login.gif
 [interaction_gif]: ./assets/interaction.gif
